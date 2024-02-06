@@ -1,6 +1,6 @@
 import { Button, Form, Input } from 'antd';
 import { useState } from 'react';
-import { service } from './http';
+import service from './http';
 
 const Register = () => {
   const [s, setS] = useState(false);
@@ -26,7 +26,7 @@ const Register = () => {
       }}
       scrollToFirstError
     >
-      <Form.Item name="name" label="昵称" rules={[{ required: true, message: '请输入你的昵称!', whitespace: true }]}>
+      <Form.Item name="name" label="姓名" rules={[{ required: true, message: '请输入你的姓名!', whitespace: true }]}>
         <Input />
       </Form.Item>
       <Form.Item name="mobile" label="手机号" rules={[{ required: true, message: '请输入你的手机号!' }]}>

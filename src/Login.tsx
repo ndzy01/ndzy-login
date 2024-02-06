@@ -1,6 +1,6 @@
 import { Button, Form, Input } from 'antd';
 import { useState } from 'react';
-import { service } from './http';
+import service from './http';
 
 const Login = () => {
   const [s, setS] = useState(false);
@@ -22,7 +22,10 @@ const Login = () => {
 
             if (res && res.data && res.data.token) {
               localStorage.setItem('token', res.data.token);
-              window.location.href = window.location.hostname + url;
+
+              if (url) {
+                window.location.href = window.location.hostname + url;
+              }
             }
           })
           .catch(() => {
