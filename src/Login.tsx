@@ -24,7 +24,7 @@ const Login = () => {
               localStorage.setItem('token', res.data.token);
 
               if (url) {
-                window.location.href = window.location.hostname + url;
+                window.location.href = url;
               }
             }
           })
