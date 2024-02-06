@@ -55,7 +55,11 @@ export const serviceWX = (options: {
       method: options.method,
       data,
     })
-      .then((res: { data: any; code: number; msg: string }) => {
+      .then((res: any) => {
+        if (res?.statusCode === 401) {
+          window.location.href = `https://ndzy01.gitee.io/ndzy-login/?url=${window.location.href}`;
+        }
+
         if (res.data.status === 1) {
           antMsg.error(res.data.msg);
         }
@@ -129,7 +133,7 @@ serviceAxios.interceptors.response.use(
 
         case 401:
           message = '您未登录，或者登录已经超时，请先登录！';
-          window.location.href = window.location.host + '/ndzy-login';
+          window.location.href = `https://ndzy01.gitee.io/ndzy-login/?url=${window.location.href}`;
 
           break;
 
